@@ -22,13 +22,12 @@ const handler = NextAuth({
         await connectToDB();
         // check if user already exists in database
         const userExists = await User.findOne({ email: profile.email });
-        console.log(userExists);
 
         // if not, create user in database
         if (!userExists) {
           await User.create({
             email: profile.email,
-            username: profile.name.replace(" ", "").toLowerCase(),
+            username: profile.name.replace(/ /g, "").toLowerCase(),
             image: profile.picture,
           });
         }
