@@ -33,7 +33,11 @@ const Nav = () => {
             <Link href="/create-prompt" className="black_btn">
               Create Prompt
             </Link>
-            <button className="outline_btn" type="button" onClick={signOut}>
+            <button
+              className="outline_btn"
+              type="button"
+              onClick={() => signOut()}
+            >
               Sign Out
             </button>
             <Link href="/profile">
