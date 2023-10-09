@@ -47,13 +47,19 @@ export const DELETE = async (request, { params }) => {
   try {
     await connectToDB();
     await Prompt.findByIdAndRemove(params.id);
-    return new Response("Prompt deleted successfully", {
-      status: 200,
-    });
+    return new Response(
+      JSON.stringify({ success: true, message: "Prompt deleted successfully" }),
+      {
+        status: 200,
+      }
+    );
   } catch (error) {
     console.log(error);
-    return new Response(JSON.stringify(error), {
-      status: 500,
-    });
+    return new Response(
+      JSON.stringify({ success: false, error: "An error occurred" }),
+      {
+        status: 500,
+      }
+    );
   }
 };
